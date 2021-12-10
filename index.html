@@ -10,8 +10,21 @@
 <body>
     <h1>Hola mundo</h1>
     <div id="myApp">
-        <h1>Hola mundo</h1>
-        <p>{{ 'jhonatan' + ' wagner'}}</p>
+        <h1>Batman quotes</h1>
+        <input type="text" 
+            v-model="newQuote"
+            v-on:keypress.enter="addQuote"
+            >
+        <small>{{ newQuote }}</small>
+        <hr>
+        <ul>
+            <!-- asi se desestructura y se coloca un indice en un for -->
+            <li v-for="( {quote, author}, index) in frases">
+                <span>{{ index+1 }} {{ quote }}</span>
+                <!-- <blockquote v-if="author">-{{ author }}</blockquote> -->
+                <blockquote v-show="author">-{{ author }}</blockquote>
+            </li>
+        </ul>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="app.js"></script>
